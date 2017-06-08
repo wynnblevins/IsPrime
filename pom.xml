@@ -7,9 +7,8 @@
 	<artifactId>isprime</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-
 	<name>isprime</name>
-	<description>Demo project for Spring Boot</description>
+	<description>The "is prime" interview question written in java.</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
