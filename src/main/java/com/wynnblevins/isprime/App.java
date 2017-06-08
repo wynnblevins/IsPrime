@@ -1,26 +1,33 @@
 package com.wynnblevins.isprime;
 
-import java.util.Scanner;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.wynnblevins.isprime.service.NormalPrimeService;
+import com.wynnblevins.isprime.service.InputService;
 import com.wynnblevins.isprime.service.PrimeService;
 
-public class App {
-	private static Integer promptForInput() {
-		Scanner reader = new Scanner(System.in);		
-		System.out.print("Please enter an integer: ");		 
-		Integer n = reader.nextInt();
-		return n;
-	}
+@SpringBootApplication
+public class App implements CommandLineRunner {
+	@Autowired
+	private PrimeService primeService;
 	
-	public static void main(String[] args) {
-		PrimeService primeService = new NormalPrimeService();
-		Integer inputInteger = promptForInput();
+	@Autowired
+	private InputService inputService;
+	
+	@Override
+	public void run(String... arg0) throws Exception {
+		Integer inputInteger = inputService.getInput("Enter a number> ");
 		
 		if (primeService.isPrime(inputInteger)) {
 			System.out.println(inputInteger + " is Prime.");
 		} else {
 			System.out.println(inputInteger + " isn't Prime.");
 		}
+	}
+	
+	public static void main(String[] args) {
+		SpringApplication.run(App.class, args);
 	}
 }
