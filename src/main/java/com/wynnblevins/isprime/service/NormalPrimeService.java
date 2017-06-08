@@ -1,5 +1,8 @@
 package com.wynnblevins.isprime.service;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class NormalPrimeService implements PrimeService {
 
 	@Override
