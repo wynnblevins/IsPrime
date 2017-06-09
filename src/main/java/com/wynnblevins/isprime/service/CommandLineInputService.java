@@ -9,19 +9,19 @@ public class CommandLineInputService implements InputService {
 	private Scanner scanner = new Scanner(System.in);
 	
 	@Override
-	public Integer getInput(String promptString) {
+	public Long getInput(String promptString) {
 		System.out.print(promptString);		
-		Integer inputInt = null;
+		Long inputLong = null;
 				
 		try {
 			String unparsedInput = scanner.nextLine();
-			inputInt = Integer.parseInt(unparsedInput);
+			inputLong = Long.parseLong(unparsedInput);
 		}
 		catch (NumberFormatException nfe) {
 			nfe.printStackTrace();
 			System.out.println("Unable to parse ");
 		}
 		
-		return inputInt;
+		return inputLong;
 	}
 }

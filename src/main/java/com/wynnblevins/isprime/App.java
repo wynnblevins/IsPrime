@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.wynnblevins.isprime.service.InputService;
+import com.wynnblevins.isprime.service.OutputService;
 import com.wynnblevins.isprime.service.PrimeService;
 
 @SpringBootApplication
@@ -16,15 +17,14 @@ public class App implements CommandLineRunner {
 	@Autowired
 	private InputService inputService;
 	
+	@Autowired
+	private OutputService outputService;
+	
 	@Override
 	public void run(String... arg0) throws Exception {
-		Integer inputInteger = inputService.getInput("Enter a number> ");
-		
-		if (primeService.isPrime(inputInteger)) {
-			System.out.println(inputInteger + " is Prime.");
-		} else {
-			System.out.println(inputInteger + " isn't Prime.");
-		}
+		Long inputNumber = inputService.getInput("Enter a number> ");
+		boolean isPrime = primeService.isPrime(inputNumber);
+		outputService.printOutput(isPrime, inputNumber);
 	}
 	
 	public static void main(String[] args) {
